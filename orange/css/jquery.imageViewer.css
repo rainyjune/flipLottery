@@ -1,0 +1,102 @@
+#imageViewerContainer {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  /*
+  background: green;
+  */
+  overflow: auto;
+  display: none;
+}
+#imageViewerContainer .contentContainer {
+  position: relative;
+  margin-top: 50%;
+  /*vertical-align: middle;*/
+  text-align: center;
+  min-height: 100%;
+  background: white;
+  height: 100%;
+  width: 100%;
+}
+
+#imageViewerContainer .contentContainer.tableLayer { 
+  display: table;
+  vertical-align: middle;
+}
+
+#viewerText {
+  font-size: 20px;
+  color: #bc001f;
+  vertical-align: middle;
+  background:#bc001f url(../images/aa.jpg) no-repeat;
+  background-size: 100%;
+  height:100%;
+  padding-top:50%;
+  font-weight: 700;
+  padding:0 20px;
+}
+
+#viewerText.win .gongxi{
+  display: block;
+  padding-top:60%;
+  width: 160px;
+  margin: 0 auto;
+}
+
+#imageViewerContainer .contentContainer.tableLayer #viewerText{ 
+  display: table-cell !important;
+  vertical-align: middle;
+}
+
+#imageViewerContainer .contentContainer.tableLayer #viewerText.ad {
+  background: url(../images/box_bg.gif) repeat;
+  word-break: break-word;
+}
+
+#imageViewerContainer .contentContainer #viewerText:empty {
+  display: none !important;
+}
+
+
+body.modal-open {
+  overflow: hidden;
+  position: fixed;
+}
+
+body.modal-open > * {
+  display: none !important;
+}
+
+body.modal-open #imageViewerContainer {
+  display: block !important;
+}
+
+body.modal-open #imageViewerContainer .contentContainer{
+  margin: 0 !important;
+}
+
+#loadingBar {
+  position:absolute;
+  width:48px;
+  height:48px;
+  padding:2px;
+  left:50%;
+  top:50%;
+  margin-left:-26px;
+  margin-top:-26px;
+  background:url(../images/ybfdbg.png) no-repeat;
+}
+
+#imageViewerContainer .closeBtn {
+  position: fixed;
+  right: 5px;
+  top: 5px;
+}
+
+#largeImg {
+  width: 100%;
+}
