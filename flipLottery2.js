@@ -128,7 +128,7 @@
       if (!isWin) {
         if (!isDec) {
           isDec = 1;
-          doDecRequest();
+          //doDecRequest();
         }
       }
     }
@@ -161,7 +161,7 @@
       } else {
         target.css("background-image", "");
         if (isWin) {
-          doDecRequest();
+          //doDecRequest();
         }
       }
     }, 200);
