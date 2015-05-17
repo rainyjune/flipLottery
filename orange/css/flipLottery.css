@@ -329,4 +329,16 @@ div[data-cardindex="4"] .back .img-view-box-in {
     font-size: 20px;
 }
 
+/* Fixes CSS issue on Android 2.3 */
+.panel .front {
+  z-index: 2;
+}
 
+.panel .back {
+  z-index: 1;
+}
+
+.panel.flip .front ,
+.panel.flip .back {
+  z-index: auto;
+}
