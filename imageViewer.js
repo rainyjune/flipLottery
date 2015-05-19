@@ -81,6 +81,8 @@
       textElement.html('');
       textElement.removeClass("ad").removeClass("win");
       textElement.hide();
+      $("#" + imgContainerName).css("width", "auto");
+      $("#" + imgContainerName).removeClass("image");
     }
     
     function closeViewer(e) {
@@ -100,6 +102,7 @@
         largeImage.attr("src",imgUrl);
         if (isOverflowFixNeeded) {
           $("#" + imgContainerName).width(this.width);
+          $("#" + imgContainerName).addClass("image");
         }
       };
       setTimeout(function(){
