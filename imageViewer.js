@@ -22,6 +22,7 @@
     var largeImage = null;
     var progressBar = null;
     var textElement = null;
+    var isOverflowFixNeeded = isAndroidBrowser() && getAndroidVersion() < 3;
     
     function init() {
       buildImageViewerContainer();
@@ -53,6 +54,9 @@
       var dataIsWin = thisElement.attr("data-isWin");
       scrollTop = $(document).scrollTop() ? $(document).scrollTop().valueOf() : 0;
       $("body").addClass("modal-open");
+      if (isOverflowFixNeeded && (dataType === "image" || (dataType === "text" && dataIsWin === "1"))) {
+        $("body").addClass("overflowFix");
+      }
       
       //loadImage(imgUrl, dataType);
       renderContent(dataType, dataContent, dataIsWin);
@@ -80,7 +84,7 @@
     }
     
     function closeViewer(e) {
-      $("body").removeClass("modal-open");
+      $("body").removeClass("modal-open").removeClass("overflowFix");
       window.scrollTo(0,scrollTop);
       if (options.afterViewerClose) {
         options.afterViewerClose();
@@ -94,6 +98,9 @@
         largeImage.show();
         progressBar.hide();
         largeImage.attr("src",imgUrl);
+        if (isOverflowFixNeeded) {
+          $("#" + imgContainerName).width(this.width);
+        }
       };
       setTimeout(function(){
       img.src = imgUrl;  
@@ -142,6 +149,23 @@
         viewerContainer.append(contentContainer);
         $("body").prepend(viewerContainer);
       }
+    }
+    
+    function isAndroidBrowser() {
+      var ua = navigator.userAgent;
+      // The user agent string of IE mobile v11 on Windows Phone 8.1 contains "Android"
+      if (ua.match(/MSIE|Trident/)) {
+        return false;
+      }
+      return (ua.indexOf("Android") >= 0) || (ua.indexOf("android") >= 0);
+    }
+    
+     /**
+     * Get 2 digit version of Android
+     */
+    function getAndroidVersion() {
+      var ua = navigator.userAgent;
+      return parseFloat(ua.slice(ua.indexOf("Android")+8)).toFixed(1);
     }
     
     init();

@@ -100,3 +100,14 @@ body.modal-open #imageViewerContainer .contentContainer{
 #largeImg {
   width: 100%;
 }
+
+.modal-open.overflowFix {
+  overflow: auto;
+  position: static;
+}
+.modal-open.overflowFix #imageViewerContainer {
+  position: static;
+  height: auto;
+  width: auto;
+}
+
